@@ -1,0 +1,197 @@
+.white {
+    background-color: white;
+}
+
+.green {
+    background-color: forestgreen;
+}
+
+.logo {
+    background-color: transparent;
+    height: 15em;
+    top: -10em;
+    width: 15em;
+    position: absolute;
+}
+
+.face {
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+    width: 30%;
+    position: relative;
+    transition: 1s;
+    z-index: 1;
+}
+
+.face:hover {
+    transform: translateY(-15%) translateX(-20%) rotateZ(-20deg);
+    transition: 1s;
+}
+
+.face:hover .cloud {
+    transform: rotateZ(20deg);
+    transition: 1s;
+    opacity: 1;
+}
+
+.cloud {
+    border: 1px solid black;
+    width: 250%;
+    height: 75%;
+    position: absolute;
+    transition: 1s;
+    bottom: 100%;
+    left: 0%;
+    transform: rotateZ(0deg);
+    justify-content: center;
+     padding: 0px;
+      opacity: 0 ;
+      border-radius: 1em;
+}
+.cloud:after{
+    content: "";
+    border-right: 10px solid transparent;
+    border-top: 10px solid black;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 100%;
+    left:20%;
+}
+
+/* .cloud img {
+    width: 100%;
+    height: 100%;
+} */
+
+.head {
+    position: absolute;
+    bottom: 0%;
+    height: 50%;
+    width: 100%;
+    border-top-left-radius: 20em;
+    border-top-right-radius: 20em;
+}
+
+.left_eye,
+.right_eye {
+    position: absolute;
+    height: 8%;
+    width: 8%;
+    border-radius: 50%;
+    bottom: 20%;
+    z-index: 1;
+}
+
+.left_eye {
+    left: 27%;
+}
+
+.right_eye {
+    right: 27%;
+}
+
+.left_ear,
+.right_ear {
+    position: absolute;
+    width: 3%;
+    height: 90%;
+    background-color: forestgreen;
+    border-radius: 2em;
+    top: 7%;
+}
+
+.left_ear {
+    left: 23%;
+    transform: rotateZ(-30deg);
+}
+
+.right_ear {
+    right: 23%;
+    transform: rotateZ(30deg);
+}
+
+.message {
+    padding: 0.1em;
+    color: white;
+    text-shadow: 0px 0px 10px black;
+    font-family: cursive;
+    text-align: center;
+    font-size: 1em;
+    
+}
+
+.lower {
+    position: relative;
+    margin-top: 1%;
+    width: 30%;
+    height: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body {
+    border-radius: 5%;
+    height: 100%;
+    width: 100%;
+}
+
+.law,
+.left_leg,
+.raw,
+.right_leg {
+    position: absolute;
+    border-radius: 20em;
+}
+
+.law,
+.raw {
+    transition: 1s;
+    height: 120%;
+    width: 15%;
+    top: -55%;
+}
+
+.left_arm,
+.right_arm {
+    position: absolute;
+    border-radius: 20em;
+    width: 100%;
+    height: 50%;
+    bottom: 0%;
+}
+
+.law {
+    left: -18%;
+}
+
+.law:hover {
+    transform: rotateZ(170deg);
+    transition: 1s;
+    transition-timing-function: linear;
+}
+
+.raw:hover {
+    transform: rotateZ(-170deg);
+    transition: 1s;
+    transition-timing-function: linear;
+}
+
+.raw {
+    right: -18%;
+}
+
+.left_leg,
+.right_leg {
+    height: 60%;
+    width: 20%;
+    bottom: -45%;
+}
+
+.left_leg {
+    left: 20%;
+}
+
+.right_leg {
+    right: 20%;
+}

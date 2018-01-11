@@ -1,0 +1,56 @@
+.floor:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 600px;
+    z-index: -3;
+    width: 100%;
+    background-color: darksalmon;
+    border: 2px solid black;
+}
+
+.floor:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 40px;
+    border-radius: 5px;
+    left: -5%;
+    z-index: -1;
+    width: 110%;
+    background-color: salmon;
+    border: 2px solid black;
+}
+
+.floor {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 600px;
+    background-color: transparent;
+}
+
+#house .floor:nth-child(1) {
+    top: -600px;
+}
+
+
+#house .floor:nth-child(2) {
+    top: -1200px;
+}
+
+#house .floor:nth-child(3) {
+    top: -1800px;
+}
+
+#house .floor:nth-child(4) {
+    top: -2400px;
+}
+
+#house .floor:nth-child(5) {
+    top: -3000px;
+}
+
+#house .floor:nth-child(6) {
+    top: -3600px;
+}

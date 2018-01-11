@@ -1,0 +1,87 @@
+ul li {
+    list-style: none;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    font-family: monospace;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 2px black;
+}
+
+#build {
+    position: relative;
+    display: block;
+    bottom: 0px;
+    width: 100%;
+    height: 3800px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+ ::-webkit-scrollbar {
+    display: none;
+}
+
+.move {
+    transform: translateX(-600px) translateY(150px) scale(1.8);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+#ground {
+    background-color: limegreen;
+    border-top: 2px solid black;
+    position: absolute;
+    overflow-y: visible;
+    width: 100%;
+    height: 200px;
+    bottom: 00px;
+}
+
+
+#house {
+    z-index: 1;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 5%;
+    background-color: grey;
+}
+
+
+@keyframes glow {
+    0% {
+        text-shadow: 1px 1px 0px white;
+    }
+    50% {
+        text-shadow: 0px 0px 0px white;
+    }
+    100% {
+        text-shadow: 1px 1px 0px white;
+    }
+}
+
+#guide {
+    transition: 0.7s;
+    width: 250px;
+    height: 30px;
+    z-index: 10;
+    position: fixed;
+    background-color: chocolate;
+    top: 370px;
+    right: -10px;
+    box-shadow: 3px 3px 5px black;
+}
+.monospace{
+    font-family: monospace!important;
+}
+.size15 li{
+font-size: 1.5em!important;
+} 
