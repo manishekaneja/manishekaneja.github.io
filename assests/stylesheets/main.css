@@ -112,10 +112,10 @@
 }
 
 .message {
-    padding: 0.1em;
+    padding: 0.6em;
     color: white;
     text-shadow: 0px 0px 10px black;
-    font-family: cursive;
+    font-family: monospace;
     text-align: center;
     font-size: 1em;
     

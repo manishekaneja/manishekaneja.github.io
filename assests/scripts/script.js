@@ -95,8 +95,8 @@ var obj = {
         content: `
         <span class='monospace' style='font-size:2.5em;    text-shadow: 2px 2px 2px #fff;'>I would be better to provide a bit of introduction first</span>
         <ul class='size15'>
-        <li>My name is Manish Aneja.</li>
-        <li>At present,I am a B.Tech Student</li>
+        <li>My name is <span class="redColor"> Manish Aneja</span>.</li>
+        <li>At present,I am a <span class="redColor"> B.Tech Student</span></li>
         <li>Not a sports person excluding some specific Events</li>
         <li>Always ready to explore new Things</li>
         <li>And now if I say about technical stuff,most of the work done by me is related to Web Domain.</li>
@@ -116,7 +116,7 @@ var obj = {
         <li>Score of 12th (Year:2015) =><br>
         <span class="progressBar">90</span>
         </li>
-        <li> Studying Computer Science Engineering from bharati vidyapeeth's college of engineering (New Delhi) under guru gobind singh indraprastha university. 
+        <li> Studying Computer Science Engineering from <span class="redColor">bharati vidyapeeth's college of engineering (New Delhi)</span>  under guru gobind singh indraprastha university. 
         </li>
         <li> I am currently in 3rd Year of B.Tech.
         </li>
