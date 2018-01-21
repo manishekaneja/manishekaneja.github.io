@@ -4,14 +4,12 @@
     transition: 0.2s width 30%;
     height: 40%;
     border-radius: 20px;
-    border: 2px solid black;
     position: absolute;
     width: 30%;
     top: 30%;
     left: 20%;
     background-color: grey;
 }
-
 .wind .wind_head p {
     transition: 1s;
     font-weight: 800;
@@ -43,17 +41,16 @@
 .wind2 {
     transition: 0.2s;
     background-color: lightblue;
+    border: 1px solid rgb(119, 185, 207);
     transform: scale(1.5);
 }
-
 .wind2 p {
     transition: 1s;
     padding: 30px 20px;
 }
-
 .wind ul li {
     background-color: red;
-    border: 2px solid black;
+    border: 1px solid black;
     display: block;
     margin: 4px 30px;
     border-radius: 4px;

@@ -8,7 +8,7 @@
 
 .trunk {
     background-color: saddlebrown;
-    border: 2px solid black;
+    border: 1px solid rgb(110, 55, 16);
     position: absolute;
     bottom: 0px;
     width: 30px;
@@ -23,7 +23,6 @@
     top: 0px;
     position: absolute;
     background-color: forestgreen;
-    border: 2px solid black;
     width: 150px;
     height: 200px;
     border-radius: 50%;

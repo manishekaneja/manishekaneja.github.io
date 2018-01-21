@@ -7,7 +7,6 @@
     top:0px;
     left:0%;
     display: flex;
-    border:2px solid black;
 }
 #extraClose{
     position: absolute;
@@ -68,7 +67,7 @@ margin: auto;    overflow: hidden;
 .specialList li{
     font-size: 1.5em;
     display: inline;
-    margin: 2px;border: 2px solid #222;
+    margin: 2px;
     border-radius: 4px;
     font-size: 1em!important;
     padding: 5px;
@@ -79,7 +78,5 @@ a{
 }
 .redColor{
 font-weight: 900;
-/* color: firebrick; */
-/* text-shadow: 2px 2px 0px transparent; */
 background-color: blueviolet;
 }

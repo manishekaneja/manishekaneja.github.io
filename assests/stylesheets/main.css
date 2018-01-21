@@ -36,7 +36,8 @@
 }
 
 .cloud {
-    border: 1px solid black;
+    border: 1px solid #222;
+    background-color: #222;
     width: 250%;
     height: 75%;
     position: absolute;
@@ -52,11 +53,11 @@
 .cloud:after{
     content: "";
     border-right: 10px solid transparent;
-    border-top: 10px solid black;
+    border-top: 10px solid #222;
     border-left: 10px solid transparent;
     position: absolute;
     top: 100%;
-    left:20%;
+    left:30%;
 }
 
 /* .cloud img {
