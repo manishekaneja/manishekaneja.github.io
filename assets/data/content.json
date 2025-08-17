@@ -1,0 +1,152 @@
+{
+  "personal": {
+    "name": "Manish Aneja",
+    "age": 19,
+    "status": "Student",
+    "currentYear": "3rd Year of B.Tech"
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "intro": "I would be better to provide a bit of introduction first",
+    "points": [
+      "My name is Manish Aneja.",
+      "At present, I am a B.Tech Student",
+      "Not a sports person excluding some specific Events",
+      "Always ready to explore new Things",
+      "And now if I say about technical stuff, most of the work done by me is related to Web Domain.",
+      "Also a Member of GDG-BVP Core Team."
+    ]
+  },
+  "studies": {
+    "title": "Academic Report",
+    "intro": "Just a Brief Information about my Studies",
+    "education": [
+      {
+        "institution": "Sri Guru Nanak Public School",
+        "type": "Secondary and Senior Secondary Education"
+      },
+      {
+        "institution": "Bharati Vidyapeeth's College of Engineering (New Delhi)",
+        "type": "Computer Science Engineering",
+        "university": "Guru Gobind Singh Indraprastha University"
+      }
+    ],
+    "scores": [
+      {
+        "exam": "10th",
+        "year": "2013",
+        "score": "95.5"
+      },
+      {
+        "exam": "12th",
+        "year": "2015",
+        "score": "90"
+      }
+    ]
+  },
+  "skills": {
+    "web": {
+      "title": "Web Skills",
+      "intro": "This Section tells what all things I know about Web",
+      "categories": {
+        "frontend": {
+          "title": "Front-End Development",
+          "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "JSP",
+            "ESP"
+          ]
+        },
+        "libraries": {
+          "title": "Libraries Used for Front-End Development",
+          "skills": [
+            "Bootstrap",
+            "jQuery",
+            "Javascript",
+            "AnimateJS",
+            "ReactJs"
+          ]
+        },
+        "backend": {
+          "title": "Back-End Development",
+          "skills": [
+            "Java",
+            "NodeJS"
+          ]
+        },
+        "frameworks": {
+          "title": "Frameworks Used",
+          "skills": [
+            "AngularJS",
+            "Angular",
+            "Mongoose",
+            "Express"
+          ]
+        }
+      }
+    },
+    "programming": {
+      "title": "Programming Skills",
+      "intro": "Programming Languages I know about",
+      "languages": [
+        {
+          "name": "C",
+          "level": "70"
+        },
+        {
+          "name": "C++",
+          "level": "75"
+        },
+        {
+          "name": "Java",
+          "level": "80"
+        },
+        {
+          "name": "ECMAScript",
+          "level": "80"
+        }
+      ]
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "intro": "Here is the list of Some Minor Works Done By Me",
+    "projects": [
+      {
+        "name": "Java Based Game",
+        "description": "Island Game Repository",
+        "url": "https://github.com/manishekaneja/Island-Game",
+        "type": "repository"
+      },
+      {
+        "name": "A Static Copy of BCCI",
+        "description": "BCCI Clone",
+        "url": "https://manishekaneja.github.io/BCCI_fake/",
+        "type": "website"
+      },
+      {
+        "name": "ToDo List",
+        "description": "ToDo List Repository",
+        "url": "https://github.com/manishekaneja/ToDoList-/",
+        "type": "repository"
+      },
+      {
+        "name": "Static UI centric Website",
+        "description": "GDC Website",
+        "url": "https://manishekaneja.github.io/GDC/",
+        "type": "website"
+      }
+    ]
+  },
+  "contact": {
+    "email": "manishekaneja@gmail.com",
+    "github": "https://github.com/manishekaneja"
+  },
+  "settings": {
+    "lastUpdated": "2024",
+    "version": "2.0",
+    "contentFormat": "simplified"
+  }
+}

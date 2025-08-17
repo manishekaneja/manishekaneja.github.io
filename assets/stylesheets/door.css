@@ -11,8 +11,21 @@
     bottom: 0px;
     right: 10%;
     background-color: transparent;
-
+    /* Button reset styles */
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }
+
+.door:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+}
+
 .door .col2P{
     perspective: 1000px;
     width: 100%;

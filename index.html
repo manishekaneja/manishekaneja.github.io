@@ -3,40 +3,86 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Know Me</title>
-    <link rel="icon" type="image/png" href="assests/icon/icon.png" sizes="32x32">
-    <link rel="stylesheet" href="assests/stylesheets/mainTry.css">
-    <link rel="stylesheet" href="assests/stylesheets/main.css">
-    <link rel="stylesheet" href="assests/stylesheets/dayAndNight.css">
-    <link rel="stylesheet" href="assests/stylesheets/info.css">
-    <link rel="stylesheet" href="assests/stylesheets/door.css">
-    <link rel="stylesheet" href="assests/stylesheets/floor.css">
-    <link rel="stylesheet" href="assests/stylesheets/tree.css">
-    <link rel="stylesheet" href="assests/stylesheets/wind.css">
-    <link rel="stylesheet" href="assests/stylesheets/extraDetails.css">
-    <link rel="stylesheet" href="assests/stylesheets/animate.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manish Aneja - Student and Web Developer Portfolio">
+    <meta name="keywords" content="Manish Aneja, web developer, student, portfolio, HTML, CSS, JavaScript">
+    <meta name="author" content="Manish Aneja">
+    <title>Manish Aneja - Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/icon/icon.png" sizes="32x32">
+    <link rel="stylesheet" href="assets/stylesheets/main-try.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <link rel="stylesheet" href="assets/stylesheets/day-and-night.css">
+    <link rel="stylesheet" href="assets/stylesheets/info.css">
+    <link rel="stylesheet" href="assets/stylesheets/door.css">
+    <link rel="stylesheet" href="assets/stylesheets/floor.css">
+    <link rel="stylesheet" href="assets/stylesheets/tree.css">
+    <link rel="stylesheet" href="assets/stylesheets/wind.css">
+    <link rel="stylesheet" href="assets/stylesheets/extra-details.css">
+    <link rel="stylesheet" href="assets/stylesheets/custom-animations.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="assests/scripts/jquery-3.2.1.js"></script>
-    <script src="assests/scripts/script.js"></script>
+    <script src="assets/scripts/main.js" defer></script>
+
+    <style>
+        .github-hosting-text {
+            font-size: 5em;
+            display: inline-block;
+            color: white;
+            text-shadow: 2px 2px 2px black;
+            margin: 10px auto;
+        }
+
+        /* Content styling for improved JavaScript */
+        .content-heading {
+            font-family: monospace;
+        }
+
+        .content-intro {
+            font-family: monospace;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 2px #fff;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .content-list {
+            /* Inherits existing .size15 styles */
+        }
+
+        .highlight {
+            font-weight: 900;
+            background-color: blueviolet;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .progress-fill {
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-text {
+            position: relative;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="build" class="day">
+<main id="build" class="day">
         <div id="ground">
-            <div id="tree1" class="tree">
-
+            <aside id="tree1" class="tree" aria-label="Decorative tree">
                 <div class="leaf"></div>
                 <div class="trunk"></div>
-            </div>
-            <div id="tree2" class="tree">
-                <div class="leaf">Manish Aneja
-                </div>
+            </aside>
+            <aside id="tree2" class="tree" aria-label="Tree with name">
+                <div class="leaf">Manish Aneja</div>
                 <div class="trunk"></div>
-            </div>
-            <div id="house">
-                <div class="floor">
-                    <div class="door">
+            </aside>
+
+            <section id="house" aria-label="Portfolio sections">
+                <article class="floor">
+                    <button class="door" aria-label="Open About section" tabindex="0" role="button">
                         <div class="col">
                             <div class="col2P">
                                 <div class="col2">
@@ -44,22 +90,23 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="wind">
+                    </button>
+                    <div class="wind" role="region" aria-labelledby="about-heading">
                         <div class="wind_head">
-                            <p>About</p>
+                            <h2 id="about-heading">About</h2>
                         </div>
                         <div class="list">
                             <ul>
-                                <li>Name:Manish Aneja</li>
-                                <li>Age:19</li>
-                                <li>At Present:Student</li>
+                                <li>Name: Manish Aneja</li>
+                                <li>Age: <span id="current-age">19</span></li>
+                                <li>At Present: Student</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="floor">
-                    <div class="door">
+                </article>
+
+                <article class="floor">
+                    <button class="door" aria-label="Open Studies section" tabindex="0" role="button">
                         <div class="col">
                             <div class="col2P">
                                 <div class="col2">
@@ -67,11 +114,10 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="wind">
+                    </button>
+                    <div class="wind" role="region" aria-labelledby="studies-heading">
                         <div class="wind_head">
-                            <p>Studies</p>
+                            <h2 id="studies-heading">Studies</h2>
                         </div>
                         <div class="list">
                             <ul>
@@ -80,10 +126,10 @@
                             </ul>
                         </div>
                     </div>
+                </article>
 
-                </div>
-                <div class="floor">
-                    <div class="door">
+                <article class="floor">
+                    <button class="door" aria-label="Open Web Skills section" tabindex="0" role="button">
                         <div class="col">
                             <div class="col2P">
                                 <div class="col2">
@@ -91,10 +137,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="wind">
+                    </button>
+                    <div class="wind" role="region" aria-labelledby="web-skills-heading">
                         <div class="wind_head">
-                            <p>Web Skills</p>
+                            <h2 id="web-skills-heading">Web Skills</h2>
                         </div>
                         <div class="list">
                             <ul>
@@ -106,21 +152,21 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="floor">
-                    <div class="door">
+                </article>
+
+                <article class="floor">
+                    <button class="door" aria-label="Open Programming section" tabindex="0" role="button">
                         <div class="col">
                             <div class="col2P">
-
                                 <div class="col2">
                                     <div class='knob'></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="wind">
+                    </button>
+                    <div class="wind" role="region" aria-labelledby="programming-heading">
                         <div class="wind_head">
-                            <p>Programming</p>
+                            <h2 id="programming-heading">Programming</h2>
                         </div>
                         <div class="list">
                             <ul>
@@ -129,43 +175,35 @@
                                 <li>Javascript</li>
                             </ul>
                         </div>
-
-
                     </div>
-                </div>
-                <div class="floor">
-                    <div class="door">
+                </article>
+
+                <article class="floor">
+                    <button class="door" aria-label="Open Experience section" tabindex="0" role="button">
                         <div class="col">
                             <div class="col2P">
-
                                 <div class="col2">
                                     <div class='knob'></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="wind">
+                    </button>
+                    <div class="wind" role="region" aria-labelledby="experience-heading">
                         <div class="wind_head">
-                            <p>Experience</p>
+                            <h2 id="experience-heading">Experience</h2>
                         </div>
                         <div class="list">
                             <ul>
                                 <li>Just a Student with a Fresh Mind</li>
-
                             </ul>
                         </div>
-
-
                     </div>
-                </div>
-
-
-
-
-            </div>
+                </article>
+            </section>
         </div>
-    </div>
-    <div id="guide">
+    </main>
+
+    <aside id="guide" aria-label="Navigation guide">
         <div class="logo">
             <div class="face">
                 <div class="head green"></div>
@@ -174,9 +212,9 @@
                 <div class="left_ear green"></div>
                 <div class="right_ear green"></div>
                 <div class="cloud">
-                    <div class="message">
-                        <!--Message to be Written Here-->
-                        To Know More, Click on Door</div>
+                    <div class="message" role="tooltip" aria-live="polite">
+                        To Know More, Click on Door
+                    </div>
                 </div>
             </div>
             <div class="lower">
@@ -191,32 +229,39 @@
                 <div class="right_leg green"></div>
             </div>
         </div>
-    </div>
-    <div id="detail">
-        <i class="fa fa-info" aria-hidden="true"></i>
+    </aside>
 
-        <div class="messageI">Contact Me at manishekaneja@gmail.com </div>
+    <footer id="detail">
+        <button aria-label="Contact information" tabindex="0">
+            <i class="fa fa-info" aria-hidden="true"></i>
+        </button>
+        <div class="messageI" role="contentinfo">
+            Contact Me at <a href="mailto:manishekaneja@gmail.com" aria-label="Send email to Manish Aneja">manishekaneja@gmail.com</a>
+        </div>
+    </footer>
 
-    </div>
-    <div id="extraBox" class="animated bounceOutRight">
-        <button id="extraClose">
+    <div id="extraBox" class="animated bounceOutRight" role="dialog" aria-labelledby="welcome-heading"
+         aria-hidden="true">
+        <button id="extraClose" aria-label="Close welcome dialog">
             <i class="fa fa-times" aria-hidden="true"></i>
         </button>
-        <div class="extraHead">
-            <h1>
+        <header class="extraHead">
+            <h1 id="welcome-heading">
                 <span class="headHere">WELCOME</span>
             </h1>
-        </div>
+        </header>
         <div class="content">
-            <span style="font-size:5em;display:inline-block;color:white;text-shadow:2px 2px 2px black;margin:10px auto;">Hosted at GITHUB <i class="fa fa-github-alt" aria-hidden="true"></i>
+            <span class="github-hosting-text">
+                Hosted at GITHUB <i class="fa fa-github-alt" aria-hidden="true"></i>
             </span>
         </div>
     </div>
-    <div id="theme" class="nightTheme activeTheme">
-        <span class="dayC">
+
+    <div id="theme" class="nightTheme activeTheme" role="button" aria-label="Toggle day/night theme" tabindex="0">
+        <span class="dayC" aria-label="Switch to day theme">
             <i class="fa fa-sun-o" aria-hidden="true"></i>
         </span>
-        <span class="nightC">
+        <span class="nightC" aria-label="Switch to night theme">
             <i class="fa fa-star" aria-hidden="true"></i>
         </span>
     </div>
