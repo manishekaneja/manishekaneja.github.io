@@ -1,7 +1,6 @@
 .wind {
-    transition: 1s;
     overflow: hidden;
-    transition: 0.2s width 30%;
+    transition: 0.2s width;
     height: 40%;
     border-radius: 20px;
     position: absolute;
@@ -10,7 +9,8 @@
     left: 20%;
     background-color: grey;
 }
-.wind .wind_head p {
+
+.wind .wind_head h2 {
     transition: 1s;
     font-weight: 800;
     font-family: monospace;
@@ -20,7 +20,8 @@
     text-align: center;
     vertical-align: middle;
 }
-.wind:hover .wind_head p{
+
+.wind:hover .wind_head h2 {
     padding: 20px 20px;
 
 }
@@ -44,7 +45,8 @@
     border: 1px solid rgb(119, 185, 207);
     transform: scale(1.5);
 }
-.wind2 p {
+
+.wind2 h2 {
     transition: 1s;
     padding: 30px 20px;
 }
