@@ -12,6 +12,7 @@ import { initRouter, navigateTo } from './router'
 import type { RoomId } from './scene/house'
 import { tickPerfGuard } from './scene/perf'
 import { initA11y } from './ui/a11y'
+import { initThemeToggle } from './ui/theme'
 
 async function main(): Promise<void> {
   const capabilities = detectCapabilities()
@@ -69,6 +70,9 @@ async function main(): Promise<void> {
 
   // A11y: keyboard room proxies
   initA11y((roomId: RoomId) => navigateTo(roomId))
+
+  // Theme toggle (day/night)
+  initThemeToggle(sceneSetup.setDayNight)
 
   // Init router (after scene is ready)
   initRouter()
