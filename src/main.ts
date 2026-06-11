@@ -11,6 +11,7 @@ import { mountHero } from './ui/hero'
 import { initRouter, navigateTo } from './router'
 import type { RoomId } from './scene/house'
 import { tickPerfGuard } from './scene/perf'
+import { initA11y } from './ui/a11y'
 
 async function main(): Promise<void> {
   const capabilities = detectCapabilities()
@@ -65,6 +66,9 @@ async function main(): Promise<void> {
 
   // Mount hero overlay
   mountHero()
+
+  // A11y: keyboard room proxies
+  initA11y((roomId: RoomId) => navigateTo(roomId))
 
   // Init router (after scene is ready)
   initRouter()
