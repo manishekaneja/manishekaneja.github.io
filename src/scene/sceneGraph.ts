@@ -10,16 +10,17 @@ import {
   CylinderGeometry,
   ConeGeometry,
   Group,
+  DoubleSide,
 } from 'three'
 
-// Warm cream/clay palette from spec §3
+// Vibrant, playful palette
 const PALETTE = {
-  sky: new Color(0xfdf6ed),
-  ground: new Color(0xd4b896),
-  fogColor: new Color(0xfdf6ed),
-  trunkColor: new Color(0x8b6040),
-  leafColor: new Color(0x7a9e5c),
-  leafDark: new Color(0x5c7a42),
+  sky: new Color(0x7ec8f0),     // bright sky blue
+  ground: new Color(0x86c54a),  // fresh grass green
+  fogColor: new Color(0xaee0f5),
+  trunkColor: new Color(0x9c5a36),
+  leafColor: new Color(0x57c24f),
+  leafDark: new Color(0x36a13e),
 }
 
 export interface SceneSetup {
@@ -31,14 +32,14 @@ export interface SceneSetup {
 export function createScene(): SceneSetup {
   const scene = new Scene()
   scene.background = PALETTE.sky.clone()
-  scene.fog = new Fog(PALETTE.fogColor, 20, 60)
+  scene.fog = new Fog(PALETTE.fogColor, 35, 95)
 
-  // Ambient light — warm fill
-  const ambientLight = new AmbientLight(0xfff3e0, 0.7)
+  // Ambient light — bright, neutral fill so colors stay saturated
+  const ambientLight = new AmbientLight(0xffffff, 0.9)
   scene.add(ambientLight)
 
-  // Key light (sun from upper-right)
-  const keyLight = new DirectionalLight(0xfff8e7, 1.2)
+  // Key light (bright sun from upper-right)
+  const keyLight = new DirectionalLight(0xffffff, 1.35)
   keyLight.position.set(8, 12, 6)
   keyLight.castShadow = false
   scene.add(keyLight)
@@ -49,8 +50,9 @@ export function createScene(): SceneSetup {
   scene.add(fillLight)
 
   // Ground plane
-  const groundGeo = new PlaneGeometry(80, 80)
-  const groundMat = new MeshLambertMaterial({ color: PALETTE.ground })
+  const groundGeo = new PlaneGeometry(200, 200)
+  // DoubleSide so the ground never backface-culls if the camera dips toward the horizon
+  const groundMat = new MeshLambertMaterial({ color: PALETTE.ground, side: DoubleSide })
   const ground = new Mesh(groundGeo, groundMat)
   ground.rotation.x = -Math.PI / 2
   ground.position.y = 0
@@ -67,18 +69,18 @@ export function createScene(): SceneSetup {
     isDayMode = day
     if (day) {
       scene.background = PALETTE.sky.clone()
-      scene.fog = new Fog(0xfdf6ed, 20, 60)
-      ambientLight.color.set(0xfff3e0)
-      ambientLight.intensity = 0.7
-      keyLight.color.set(0xfff8e7)
-      keyLight.intensity = 1.2
+      scene.fog = new Fog(PALETTE.fogColor, 35, 95)
+      ambientLight.color.set(0xffffff)
+      ambientLight.intensity = 0.9
+      keyLight.color.set(0xffffff)
+      keyLight.intensity = 1.35
     } else {
-      scene.background = new Color(0x1a1a2e)
-      scene.fog = new Fog(0x1a1a2e, 15, 50)
-      ambientLight.color.set(0x3344aa)
-      ambientLight.intensity = 0.4
-      keyLight.color.set(0xaabbff)
-      keyLight.intensity = 0.6
+      scene.background = new Color(0x21204a)
+      scene.fog = new Fog(0x21204a, 25, 80)
+      ambientLight.color.set(0x5560cc)
+      ambientLight.intensity = 0.6
+      keyLight.color.set(0xbfc8ff)
+      keyLight.intensity = 0.8
     }
   }
 
