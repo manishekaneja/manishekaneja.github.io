@@ -14,10 +14,8 @@ export interface CameraSetup {
 }
 
 let _reducedMotion = false
-// Idle auto-orbit state (module scope so the fly-to tweens can pause/resume it)
-let _idleEnabled = false
-let _idleAllowed = false
-let _idleAngle = 0
+// Whether the gentle continuous auto-rotate is allowed (off under reduced-motion)
+let _autoRotateAllowed = false
 
 export function createCamera(renderer: WebGLRenderer, reducedMotion: boolean): CameraSetup {
   _reducedMotion = reducedMotion
@@ -40,15 +38,19 @@ export function createCamera(renderer: WebGLRenderer, reducedMotion: boolean): C
   // below the ground plane (y=0) — otherwise the one-sided ground would cull away.
   controls.minPolarAngle = Math.PI * 0.05
   controls.maxPolarAngle = Math.PI * 0.48
-  controls.minAzimuthAngle = -Math.PI * 0.45
-  controls.maxAzimuthAngle = Math.PI * 0.45
+  // No azimuth clamp — allow full continuous 360° rotation for the auto-orbit
   controls.minDistance = 5
   controls.maxDistance = 25
   controls.enableDamping = true
   controls.dampingFactor = 0.08
 
-  // Any manual interaction stops the idle auto-orbit so it never fights the user's drag
-  controls.addEventListener('start', () => { _idleEnabled = false })
+  // Gentle continuous auto-rotate, driven by OrbitControls itself (no manual fight)
+  _autoRotateAllowed = !reducedMotion
+  controls.autoRotate = !reducedMotion
+  controls.autoRotateSpeed = 0.8
+
+  // Any manual interaction stops the auto-rotate so it never fights the user's drag
+  controls.addEventListener('start', () => { controls.autoRotate = false })
 
   // Handle window resize
   window.addEventListener('resize', () => {
@@ -57,21 +59,8 @@ export function createCamera(renderer: WebGLRenderer, reducedMotion: boolean): C
     camera.updateProjectionMatrix()
   })
 
-  // Idle auto-orbit — only runs at the overview, paused while focused on a room
-  _idleAllowed = !reducedMotion
-  _idleEnabled = !reducedMotion
-  _idleAngle = 0
-
   function update(): void {
-    if (_idleEnabled && !_tweening) {
-      _idleAngle += 0.002
-      const r = 12
-      camera.position.x = Math.sin(_idleAngle) * r
-      camera.position.z = Math.cos(_idleAngle) * r
-      camera.position.y = OVERVIEW_POSITION.y
-      camera.lookAt(OVERVIEW_TARGET.x, OVERVIEW_TARGET.y, OVERVIEW_TARGET.z)
-      controls.target.set(OVERVIEW_TARGET.x, OVERVIEW_TARGET.y, OVERVIEW_TARGET.z)
-    }
+    // OrbitControls.update() drives both damping and the continuous auto-rotate
     controls.update()
   }
 
@@ -110,8 +99,8 @@ export function flyToRoom(roomId: RoomId): Promise<void> {
     if (!_cameraSetup) { resolve(); return }
     const { camera, controls } = _cameraSetup
 
-    // Focus a room: stop the idle orbit so it can't yank the camera back out
-    _idleEnabled = false
+    // Focus a room: stop the auto-rotate so it can't yank the camera back out
+    controls.autoRotate = false
 
     const target = ROOM_TARGETS[roomId]
     // Frame the door head-on: stand back + slightly above, look AT the door (z≈2.0)
@@ -169,10 +158,8 @@ export function returnToOverview(): Promise<void> {
     if (!_cameraSetup) { resolve(); return }
     const { camera, controls } = _cameraSetup
 
-    // Returning to overview: reset idle to the front (angle 0) and re-arm it so it
-    // resumes seamlessly once the tween finishes (no pop, no fight with the tween).
-    _idleAngle = 0
-    _idleEnabled = _idleAllowed
+    // Returning to overview: re-arm the gentle auto-rotate once we're back.
+    controls.autoRotate = _autoRotateAllowed
 
     const toPos: Vec3 = OVERVIEW_POSITION
     const toTarget: Vec3 = OVERVIEW_TARGET
