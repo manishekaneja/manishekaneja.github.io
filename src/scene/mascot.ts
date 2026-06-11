@@ -73,18 +73,29 @@ export function createMascot(scene: Scene, reducedMotion: boolean): MascotSetup 
     group.add(tip)
   }
 
-  // Stand in the grass, front-left of the house, facing the visitor
-  group.position.set(-4.6, 0, 4.6)
-  group.rotation.y = 0.35
+  // Stand on the walkway in front of the house, facing the visitor
+  const PATH_Z = 4.5
+  const WALK_SPAN = 5.0 // strolls x ∈ [-5, 5] along the path
+  group.position.set(0, 0, PATH_Z)
+  group.rotation.y = 0
   scene.add(group)
 
-  const baseY = group.position.y
-
   function update(elapsedMs: number): void {
-    if (reducedMotion) return
-    // Gentle bob + a tiny sway
-    group.position.y = baseY + Math.sin(elapsedMs * 0.0022) * 0.08
-    group.rotation.y = 0.35 + Math.sin(elapsedMs * 0.0012) * 0.06
+    if (reducedMotion) {
+      // Stand still, facing the visitor
+      group.position.set(0, 0, PATH_Z)
+      group.rotation.y = 0
+      return
+    }
+    const t = elapsedMs * 0.00035
+    // Stroll back and forth along the walkway (eases at the turns, where cos→0)
+    group.position.x = Math.sin(t) * WALK_SPAN
+    group.position.z = PATH_Z
+    // Face the direction of travel
+    const dir = Math.cos(t)
+    group.rotation.y = dir >= 0 ? Math.PI / 2 : -Math.PI / 2
+    // Walk bounce
+    group.position.y = Math.abs(Math.sin(elapsedMs * 0.006)) * 0.07
   }
 
   return { group, update }
