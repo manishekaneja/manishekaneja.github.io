@@ -1,0 +1,116 @@
+/* Responsive layout — desktop / tablet / mobile breakpoints */
+
+/* ---------- Panel responsive ---------- */
+#content-panel {
+  width: min(480px, 100vw);
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* Tablet (≤768px): near-fullscreen panel */
+@media (max-width: 768px) {
+  #content-panel {
+    width: 100vw;
+  }
+
+  #hero-overlay {
+    padding: 24px 20px;
+  }
+}
+
+/* Mobile (≤480px): fullscreen panel sheet, slide from bottom */
+@media (max-width: 480px) {
+  #content-panel {
+    width: 100vw;
+    right: 0;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    height: 80vh;
+    border-left: none;
+    border-top: 1px solid var(--color-border, #e0d8d2);
+    border-radius: 16px 16px 0 0;
+    transform: translateY(100%);
+  }
+
+  #panel-overlay #content-panel[style*="translateX(0)"] {
+    transform: translateY(0) !important;
+  }
+
+  #hero-overlay {
+    padding: 16px;
+  }
+
+  #hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ---------- Canvas fills viewport ---------- */
+#canvas-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: none; /* allow custom touch handling */
+}
+
+/* ---------- Hero overlay responsive ---------- */
+#hero-overlay {
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  #hero-overlay {
+    max-width: 100%;
+  }
+}
+
+/* ---------- Fallback 2D ---------- */
+#fallback-container {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+@media (max-width: 600px) {
+  #fallback-container {
+    padding: 32px 16px 60px;
+  }
+}
+
+/* ---------- Focus rings ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-accent, #c4673a);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Room proxy focusable buttons */
+.room-proxy {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.room-proxy:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  padding: 4px 8px;
+  background: var(--color-surface, #faf7f3);
+  border: 2px solid var(--color-accent, #c4673a);
+  border-radius: 6px;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}

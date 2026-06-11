@@ -1,4 +1,5 @@
 import './styles/base.css'
+import './styles/responsive.css'
 import { detectCapabilities } from './capabilities'
 import { mountFallback2D } from './fallback/fallback2d'
 import { createRenderer, startRenderLoop } from './scene/renderer'
