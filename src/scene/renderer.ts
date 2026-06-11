@@ -53,8 +53,10 @@ export function startRenderLoop(
 
   function loop(): void {
     _animFrameId = requestAnimationFrame(loop)
-    if (_paused) return
+    // Always run onTick — it drives the perf guard, which is what resumes the loop
+    // after a panel closes. Gating onTick on _paused self-deadlocks (loop never resumes).
     onTick?.()
+    if (_paused) return
     renderer.render(scene, camera)
   }
 
