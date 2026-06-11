@@ -9,7 +9,6 @@ const ROOM_LABELS: Record<RoomId, string> = {
   experience: 'Open Experience section',
   skills:     'Open Skills section',
   projects:   'Open Projects section',
-  contact:    'Open Contact section',
 }
 
 let _proxyContainer: HTMLElement | null = null

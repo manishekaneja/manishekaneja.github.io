@@ -8,7 +8,6 @@ const SECTION_TITLES: Record<RoomId, string> = {
   experience: 'Experience',
   skills:     'Skills',
   projects:   'Projects',
-  contact:    'Contact',
 }
 
 export function getSectionTitle(id: RoomId): string {
@@ -31,9 +30,6 @@ export function renderSection(sectionId: RoomId): HTMLElement {
       break
     case 'projects':
       el.appendChild(renderProjects())
-      break
-    case 'contact':
-      el.appendChild(renderContact())
       break
   }
 
