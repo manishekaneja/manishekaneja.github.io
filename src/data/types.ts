@@ -1,5 +1,3 @@
-// TODO: portfolio content types - implement in content-types task
-
 export interface ContactLink {
   label: string
   url: string
@@ -45,11 +43,6 @@ export interface Profile {
   title: string
   summary: string
   location?: string
-}
-
-export interface Section {
-  id: string
-  title: string
 }
 
 export interface PortfolioContent {
