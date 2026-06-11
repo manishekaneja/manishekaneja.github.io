@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- OG image: warm cream background, name + title -->
+  <rect width="1200" height="630" fill="#f5f0eb"/>
+  <!-- House silhouette -->
+  <rect x="880" y="200" width="240" height="280" fill="#e8d5c0"/>
+  <polygon points="860,200 1000,100 1140,200" fill="#c4673a"/>
+  <rect x="940" y="340" width="80" height="140" fill="#8b5e3c"/>
+  <!-- Text -->
+  <text x="80" y="240" font-family="Georgia,serif" font-size="64" font-weight="700" fill="#2c2420">Manish Aneja</text>
+  <text x="80" y="320" font-family="Georgia,serif" font-size="36" fill="#c4673a">Senior Software Engineer (Android)</text>
+  <text x="80" y="400" font-family="Arial,sans-serif" font-size="28" fill="#6b5c56">7+ years · Blinkit SDUI · Jetpack Compose · KMP</text>
+  <text x="80" y="500" font-family="Arial,sans-serif" font-size="24" fill="#9c8c84">manishekaneja.github.io</text>
+</svg>
