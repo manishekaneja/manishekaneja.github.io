@@ -26,43 +26,42 @@ export default function ScrollSpyNav() {
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
 
-    // Observe impact/work/stack/about with the prototype rootMargin.
-    // #intro is handled by the scroll fallback below because the section
-    // is shorter than the ~45px detection band on typical viewports.
-    const impactEl = document.getElementById('impact')
-    const nonIntroSecs = secs.filter(s => s.id !== 'intro')
+    let ticking = false
+    let rafId = 0
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            links.forEach(l => l.classList.remove('active'))
-            const active = map[entry.target.id]
-            if (active) active.classList.add('active')
-          }
-        })
-      },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-    )
+    function update() {
+      const line = window.innerHeight * 0.45
+      // Find the last section whose top edge is at or above the detection line.
+      // Default to intro (first section) if none qualifies.
+      let activeId: string = SECTIONS[0]
+      for (const sec of secs) {
+        if (sec.getBoundingClientRect().top <= line) {
+          activeId = sec.id
+        }
+      }
+      links.forEach(l => l.classList.remove('active'))
+      const activeLink = map[activeId]
+      if (activeLink) activeLink.classList.add('active')
+      ticking = false
+    }
 
-    nonIntroSecs.forEach(s => io.observe(s))
-
-    // Scroll fallback: when scrollY is above the start of #impact, force intro active.
-    function onScroll() {
-      if (!impactEl) return
-      if (window.scrollY < impactEl.offsetTop) {
-        links.forEach(l => l.classList.remove('active'))
-        if (map['intro']) map['intro'].classList.add('active')
+    function onScrollOrResize() {
+      if (!ticking) {
+        ticking = true
+        rafId = requestAnimationFrame(update)
       }
     }
 
-    // Fire once on mount so intro is active at page load.
-    onScroll()
+    // Run once on mount so intro is active at page load.
+    update()
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize, { passive: true })
+
     return () => {
-      io.disconnect()
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', onScrollOrResize)
+      window.removeEventListener('resize', onScrollOrResize)
+      cancelAnimationFrame(rafId)
     }
   }, [])
 
