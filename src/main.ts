@@ -5,6 +5,7 @@ import { mountFallback2D } from './fallback/fallback2d'
 import { createRenderer, startRenderLoop } from './scene/renderer'
 import { createScene } from './scene/sceneGraph'
 import { createHouse } from './scene/house'
+import { createMascot } from './scene/mascot'
 import { createCamera, setCameraSetup } from './scene/camera'
 import { initRaycast } from './scene/raycast'
 import { mountHero } from './ui/hero'
@@ -55,6 +56,9 @@ async function main(): Promise<void> {
   // Init house with 5 rooms
   createHouse(scene)
 
+  // Android-green mascot standing in the yard
+  const mascot = createMascot(scene, capabilities.reducedMotion)
+
   // Init camera
   const cameraSetup = createCamera(renderer, capabilities.reducedMotion)
   setCameraSetup(cameraSetup)
@@ -83,6 +87,7 @@ async function main(): Promise<void> {
   // Start render loop (with perf guard tick)
   startRenderLoop(rendererSetup, scene, camera, () => {
     updateCamera()
+    mascot.update(performance.now())
     tickPerfGuard()
   })
 
