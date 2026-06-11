@@ -10,6 +10,7 @@ import { initRaycast } from './scene/raycast'
 import { mountHero } from './ui/hero'
 import { initRouter, navigateTo } from './router'
 import type { RoomId } from './scene/house'
+import { tickPerfGuard } from './scene/perf'
 
 async function main(): Promise<void> {
   const capabilities = detectCapabilities()
@@ -71,8 +72,11 @@ async function main(): Promise<void> {
   // Expose day/night toggle on window for theme-polish task
   ;(window as unknown as Record<string, unknown>).__setDayNight = sceneSetup.setDayNight
 
-  // Start render loop
-  startRenderLoop(rendererSetup, scene, camera, updateCamera)
+  // Start render loop (with perf guard tick)
+  startRenderLoop(rendererSetup, scene, camera, () => {
+    updateCamera()
+    tickPerfGuard()
+  })
 
   // Remove loading screen
   requestAnimationFrame(() => {
