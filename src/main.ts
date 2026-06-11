@@ -6,6 +6,7 @@ import { createRenderer, startRenderLoop } from './scene/renderer'
 import { createScene } from './scene/sceneGraph'
 import { createHouse } from './scene/house'
 import { createMascot } from './scene/mascot'
+import { createSky } from './scene/sky'
 import { createCamera, setCameraSetup } from './scene/camera'
 import { initRaycast } from './scene/raycast'
 import { mountHero } from './ui/hero'
@@ -56,6 +57,9 @@ async function main(): Promise<void> {
   // Init house with 5 rooms
   createHouse(scene)
 
+  // Gradient sky dome + drifting clouds
+  const sky = createSky(scene, capabilities.reducedMotion)
+
   // Android-green mascot standing in the yard
   const mascot = createMascot(scene, capabilities.reducedMotion)
 
@@ -75,8 +79,11 @@ async function main(): Promise<void> {
   // A11y: keyboard room proxies
   initA11y((roomId: RoomId) => navigateTo(roomId))
 
-  // Theme toggle (day/night)
-  initThemeToggle(sceneSetup.setDayNight)
+  // Theme toggle (day/night) — drives both the scene lighting and the sky
+  initThemeToggle((day: boolean) => {
+    sceneSetup.setDayNight(day)
+    sky.setDayNight(day)
+  })
 
   // Init router (after scene is ready)
   initRouter()
@@ -88,6 +95,7 @@ async function main(): Promise<void> {
   startRenderLoop(rendererSetup, scene, camera, () => {
     updateCamera()
     mascot.update(performance.now())
+    sky.update(performance.now())
     tickPerfGuard()
   })
 
