@@ -1,17 +1,18 @@
 /* Base styles - Claude aesthetic (warm cream/clay palette) */
 
 :root {
-  --color-bg: #f5f0eb;
-  --color-surface: #faf7f3;
-  --color-text: #2c2420;
-  --color-text-muted: #6b5c56;
-  --color-accent: #c4673a;
-  --color-accent-muted: #d4895e;
-  --color-border: #e0d8d2;
+  --color-bg: #fff7ec;
+  --color-surface: #ffffff;
+  --color-text: #2b2018;
+  --color-text-muted: #7a6a5d;
+  --color-accent: #ff6b4a;
+  --color-accent-muted: #ffb13c;
+  --color-accent-2: #4d8cff;
+  --color-border: #f0e3d4;
   --font-display: Georgia, 'Times New Roman', serif;
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(44, 36, 32, 0.12);
+  --radius: 16px;
+  --shadow: 0 10px 34px rgba(60, 40, 30, 0.16);
 }
 
 *, *::before, *::after {
