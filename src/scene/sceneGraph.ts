@@ -3,6 +3,7 @@ import {
   AmbientLight,
   DirectionalLight,
   PlaneGeometry,
+  BoxGeometry,
   MeshLambertMaterial,
   Mesh,
   Color,
@@ -59,7 +60,20 @@ export function createScene(): SceneSetup {
   ground.receiveShadow = false
   scene.add(ground)
 
-  // Trees (nod to original site)
+  // Walkway in front of the house — the mascot strolls along this
+  const pathMat = new MeshLambertMaterial({ color: new Color(0xd9cdab) })
+  const path = new Mesh(new BoxGeometry(13, 0.06, 1.4), pathMat)
+  path.position.set(0, 0.04, 4.5)
+  scene.add(path)
+  // Lighter stone border strips along the path edges
+  const edgeMat = new MeshLambertMaterial({ color: new Color(0xeee3c6) })
+  for (const dz of [-0.78, 0.78]) {
+    const edge = new Mesh(new BoxGeometry(13, 0.07, 0.16), edgeMat)
+    edge.position.set(0, 0.045, 4.5 + dz)
+    scene.add(edge)
+  }
+
+  // Trees (nod to original site) — denser scatter around the yard
   const trees = createTrees()
   scene.add(trees)
 
@@ -116,15 +130,18 @@ function createTree(x: number, z: number, scale: number): Group {
 
 function createTrees(): Group {
   const group = new Group()
+  // x, z, scale — kept clear of the house footprint and the front walkway corridor
   const placements: Array<[number, number, number]> = [
-    [-4, -3, 0.8],
-    [-5, -1, 0.9],
-    [-4.5, 1.5, 0.7],
-    [5.5, -3.5, 0.85],
-    [6, -1, 1.0],
-    [5, 2, 0.75],
-    [-3.5, 4, 0.8],
-    [4, 4.5, 0.9],
+    // left side / back-left
+    [-5, -3, 0.85], [-6, -1.5, 1.0], [-6.5, 0.5, 0.9], [-5.5, 2, 0.75],
+    [-7, -3.5, 1.05], [-7.5, 1.5, 0.95],
+    // right side / back-right
+    [5, -3, 0.85], [6, -1.5, 1.0], [6.5, 0.5, 0.9], [5.5, 2, 0.75],
+    [7, -3.5, 1.05], [7.5, 1.5, 0.95],
+    // back row
+    [-2.5, -5, 0.9], [0, -5.5, 1.0], [2.5, -5, 0.9], [-4.5, -6, 0.8], [4.5, -6, 0.8],
+    // flanking the walkway ends + far front corners
+    [-8, 4.5, 0.95], [8, 4.5, 0.95], [-6, 6.5, 0.85], [6, 6.5, 0.85],
   ]
   for (const [x, z, s] of placements) {
     group.add(createTree(x, z, s))
