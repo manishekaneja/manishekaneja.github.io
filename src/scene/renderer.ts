@@ -1,15 +1,77 @@
-// TODO: WebGL renderer - implement in scene-renderer task
-import type { WebGLRenderer } from 'three'
+import {
+  WebGLRenderer,
+  type Scene,
+  type Camera,
+} from 'three'
 
 export interface RendererSetup {
   renderer: WebGLRenderer
   canvas: HTMLCanvasElement
 }
 
-export function createRenderer(_canvas: HTMLCanvasElement): RendererSetup {
-  throw new Error('TODO: implement in scene-renderer task')
+let _animFrameId: number | null = null
+let _paused = false
+
+export function createRenderer(container: HTMLElement): RendererSetup {
+  const canvas = document.createElement('canvas')
+  container.appendChild(canvas)
+
+  const renderer = new WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: false,
+    powerPreference: 'high-performance',
+  })
+
+  // Cap pixel ratio to 2 for performance
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setSize(container.clientWidth, container.clientHeight, false)
+
+  // Resize handling
+  const resizeObserver = new ResizeObserver(() => {
+    const w = container.clientWidth
+    const h = container.clientHeight
+    renderer.setSize(w, h, false)
+  })
+  resizeObserver.observe(container)
+
+  // Pause render loop when tab is hidden
+  document.addEventListener('visibilitychange', () => {
+    _paused = document.hidden
+  })
+
+  return { renderer, canvas }
 }
 
-export function startRenderLoop(_setup: RendererSetup, _tick: () => void): void {
-  // TODO: implement
+export function startRenderLoop(
+  setup: RendererSetup,
+  scene: Scene,
+  camera: Camera,
+  onTick?: () => void
+): void {
+  const { renderer } = setup
+
+  function loop(): void {
+    _animFrameId = requestAnimationFrame(loop)
+    if (_paused) return
+    onTick?.()
+    renderer.render(scene, camera)
+  }
+
+  _animFrameId = requestAnimationFrame(loop)
+}
+
+export function stopRenderLoop(): void {
+  if (_animFrameId !== null) {
+    cancelAnimationFrame(_animFrameId)
+    _animFrameId = null
+  }
+}
+
+export function pauseRenderLoop(): void {
+  _paused = true
+}
+
+export function resumeRenderLoop(): void {
+  _paused = false
 }
