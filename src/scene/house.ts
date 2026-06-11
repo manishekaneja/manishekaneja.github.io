@@ -16,21 +16,28 @@ export interface HouseSetup {
   roomMeshes: Map<RoomId, Mesh>
 }
 
-// Warm clay palette for house (spec §3)
+// Vibrant, playful storybook-cottage palette
 const COLORS = {
-  wall: new Color(0xe8d5c0),
-  wallDark: new Color(0xd4b896),
-  roof: new Color(0xc4673a),
-  roofDark: new Color(0xa85530),
-  door: new Color(0x8b5e3c),
-  doorHover: new Color(0xc47a50),
-  chimney: new Color(0xbca08c),
-  trim: new Color(0xf5ede0),
+  wall: new Color(0xfff1d6),     // warm sunny cream
+  wallDark: new Color(0xffe3ad),
+  roof: new Color(0xef5b4c),     // bright red-orange
+  roofDark: new Color(0xd6442f),
+  chimney: new Color(0xc8553d),  // brick
+  frame: new Color(0xfffaf0),    // white door frame
 }
 
-// Default emissive for hover feedback
+// Each room door gets its own bright color — playful + makes doors obvious
+const DOOR_COLORS: Record<RoomId, number> = {
+  about:      0xff6b6b, // coral
+  experience: 0xffc93c, // amber
+  skills:     0x49c5b6, // teal
+  projects:   0x4d8cff, // blue
+  contact:    0xb168ee, // purple
+}
+
+// Default emissive for hover feedback (warm glow lift)
 export const DOOR_DEFAULT_EMISSIVE = new Color(0x000000)
-export const DOOR_HOVER_EMISSIVE = new Color(0x5a2800)
+export const DOOR_HOVER_EMISSIVE = new Color(0x554400)
 
 function makeMat(color: Color): MeshLambertMaterial {
   return new MeshLambertMaterial({ color })
@@ -70,10 +77,17 @@ export function createHouse(scene: Scene): HouseSetup {
     ['contact',     2.4,  0.5,  2.01],
   ]
 
+  const frameMat = makeMat(COLORS.frame)
   for (const [roomId, dx, dy, dz] of doorPositions) {
-    const doorGeo = new BoxGeometry(0.8, 1.2, 0.08)
+    // White frame slab behind the door so each door reads as a real entrance
+    const frameGeo = new BoxGeometry(1.0, 1.45, 0.06)
+    const frame = new Mesh(frameGeo, frameMat)
+    frame.position.set(dx, dy + 0.05, dz - 0.02)
+    group.add(frame)
+
+    const doorGeo = new BoxGeometry(0.8, 1.2, 0.1)
     const doorMat = new MeshLambertMaterial({
-      color: COLORS.door,
+      color: new Color(DOOR_COLORS[roomId]),
       emissive: DOOR_DEFAULT_EMISSIVE.clone(),
     })
     const door = new Mesh(doorGeo, doorMat)
