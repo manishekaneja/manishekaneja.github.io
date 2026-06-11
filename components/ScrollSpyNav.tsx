@@ -26,6 +26,12 @@ export default function ScrollSpyNav() {
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
 
+    // Observe impact/work/stack/about with the prototype rootMargin.
+    // #intro is handled by the scroll fallback below because the section
+    // is shorter than the ~45px detection band on typical viewports.
+    const impactEl = document.getElementById('impact')
+    const nonIntroSecs = secs.filter(s => s.id !== 'intro')
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -39,8 +45,25 @@ export default function ScrollSpyNav() {
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
     )
 
-    secs.forEach(s => io.observe(s))
-    return () => io.disconnect()
+    nonIntroSecs.forEach(s => io.observe(s))
+
+    // Scroll fallback: when scrollY is above the start of #impact, force intro active.
+    function onScroll() {
+      if (!impactEl) return
+      if (window.scrollY < impactEl.offsetTop) {
+        links.forEach(l => l.classList.remove('active'))
+        if (map['intro']) map['intro'].classList.add('active')
+      }
+    }
+
+    // Fire once on mount so intro is active at page load.
+    onScroll()
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      io.disconnect()
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   return (

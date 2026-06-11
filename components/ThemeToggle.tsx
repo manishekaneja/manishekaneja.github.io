@@ -41,7 +41,6 @@ export default function ThemeToggle() {
       id="themeToggle"
       role="button"
       tabIndex={0}
-      aria-label="Toggle theme"
       onClick={toggle}
     >
       <SunIcon className="ico light-only" />
