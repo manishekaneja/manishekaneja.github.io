@@ -1,43 +1,38 @@
-// Contact section — verbatim from A2 Portfolio.html lines 317–336
+// Contact section — content from data/content.ts
 import { MailIcon } from '@/lib/icons'
+import { content } from '@/data/content'
+
+const { contact } = content
 
 export default function Contact() {
   return (
     <section id="contact">
       <div className="contact">
-        <div className="eyebrow" style={{ marginBottom: '14px' }}>Let&apos;s talk</div>
-        <h2>Building something at scale?</h2>
-        <p>
-          I&apos;m open to senior and staff Android roles where rendering, performance and
-          platform foundations matter. Happy to chat.
-        </p>
+        <div className="eyebrow" style={{ marginBottom: '14px' }}>{contact.eyebrow}</div>
+        <h2>{contact.heading}</h2>
+        <p>{contact.paragraph}</p>
         <div className="cta-row">
-          <a className="cta primary" href="mailto:manishekaneja@gmail.com">
+          <a className="cta primary" href={contact.primaryCta.href}>
             <MailIcon width={17} height={17} />
-            manishekaneja@gmail.com
+            {contact.primaryCta.label}
           </a>
-          <a
-            className="cta ghost"
-            href="https://linkedin.com/in/manishaneja"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            className="cta ghost"
-            href="https://github.com/manishekaneja"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
+          {contact.ghostCtas.map((cta, i) => (
+            <a
+              key={i}
+              className="cta ghost"
+              href={cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {cta.label}
+            </a>
+          ))}
         </div>
       </div>
       <div className="colophon">
-        <span>© 2026 Manish Aneja</span>
-        <span>Gurgaon, IN · +91 99115 78586</span>
-        <span>Built with care · A2</span>
+        {contact.colophon.map((line, i) => (
+          <span key={i}>{line}</span>
+        ))}
       </div>
     </section>
   )
