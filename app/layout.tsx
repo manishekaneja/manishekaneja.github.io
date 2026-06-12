@@ -24,6 +24,7 @@ const mono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://manishekaneja.github.io'),
   title: 'Manish Aneja — Senior Android Engineer',
   description:
     'Senior Android engineer at Blinkit. Cart, payments, server-driven UI and design systems for surfaces serving 4M orders/day at 99.98% crash-free.',

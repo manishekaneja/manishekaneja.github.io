@@ -1,9 +1,20 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import ThemeToggle from '@/components/ThemeToggle'
 import RevealOnScroll from '@/components/RevealOnScroll'
 import { GitHubIcon, LinkedInIcon, HashnodeIcon, ArrowUpRightIcon } from '@/lib/icons'
 import { getAllProjects } from '@/data/projects'
 import { projectsPage } from '@/data/projectsPage'
+
+export const metadata: Metadata = {
+  title: 'Projects — Manish Aneja',
+  description: projectsPage.hero.sub,
+  openGraph: {
+    title: 'Projects — Manish Aneja',
+    description: projectsPage.hero.sub,
+    type: 'website',
+  },
+}
 
 export default function ProjectsPage() {
   const projects = getAllProjects()
