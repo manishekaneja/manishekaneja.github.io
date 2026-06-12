@@ -87,7 +87,7 @@ export default async function ProjectDetailPage({
       <section className="wrap det-hero">
         <div className="ph-index">{badge}</div>
         <h1>{project.title}</h1>
-        <p className="ph-lead">{project.lead}</p>
+        <p className="ph-lead">{richTextStrong(project.lead)}</p>
         <div className="det-stack">
           {project.techStack.map((t) => (
             <span key={t} className="chip">{t}</span>
