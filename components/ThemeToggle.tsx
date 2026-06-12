@@ -5,6 +5,7 @@ import { SunIcon, MoonIcon } from '@/lib/icons'
 
 // localStorage key — must match the anti-FOUC head script in app/layout.tsx
 const THEME_KEY = 'ma-portfolio-theme'
+const DURATION = 800
 
 export default function ThemeToggle() {
   // aria-pressed is set after mount to avoid hydration mismatch
@@ -26,17 +27,45 @@ export default function ThemeToggle() {
     return () => el?.removeEventListener('keydown', handleKey)
   }, [])
 
-  function toggle() {
-    const html = document.documentElement
-    const current = html.getAttribute('data-theme')
-    const next = current === 'dark' ? 'light' : 'dark'
-    html.setAttribute('data-theme', next)
+  function applyTheme(next: string) {
+    document.documentElement.setAttribute('data-theme', next)
     setIsDark(next === 'dark')
     try {
       localStorage.setItem(THEME_KEY, next)
     } catch (_) {
       // storage blocked — no-op
     }
+  }
+
+  function toggle() {
+    const html = document.documentElement
+    const current = html.getAttribute('data-theme')
+    const next = current === 'dark' ? 'light' : 'dark'
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // Fallback: no View Transitions support OR reduced motion → direct apply
+    if (typeof document.startViewTransition === 'undefined' || prefersReducedMotion) {
+      applyTheme(next)
+      return
+    }
+
+    // Curtain: new theme drops in from the top over the old (vertical reveal)
+    const vt = document.startViewTransition(() => {
+      applyTheme(next)
+    })
+    vt.ready.then(() => {
+      document.documentElement.animate(
+        { clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0 0)'] },
+        {
+          duration: DURATION,
+          easing: 'cubic-bezier(.4,.05,.2,1)',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      )
+    })
   }
 
   return (

@@ -232,3 +232,8 @@ html[data-theme="dark"] .cta.primary:hover{box-shadow:0 14px 30px -16px var(--ac
   .sb-nav{display:none;}
   .content{padding:44px 26px 70px;}
 }
+
+/* ---------------- VIEW TRANSITIONS (theme curtain) ---------------- */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal;}
+::view-transition-old(root){z-index:1;}
+::view-transition-new(root){z-index:2147483646;}
