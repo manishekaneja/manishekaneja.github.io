@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
+import { PROJECTS_ENABLED } from '@/data/flags'
 
 const SECTIONS = ['intro', 'impact', 'work', 'stack', 'about'] as const
 const NAV_LINKS = [
@@ -76,12 +77,14 @@ export default function ScrollSpyNav() {
         </a>
       ))}
       {/* 05 Projects — internal route link, no data-sec so scroll-spy ignores it */}
-      <Link href="/projects" className="ext">
-        <span className="idx">05</span>
-        {' '}Projects{' '}
-        <span className="rule"></span>
-        <span className="arr">↗</span>
-      </Link>
+      {PROJECTS_ENABLED && (
+        <Link href="/projects" className="ext">
+          <span className="idx">05</span>
+          {' '}Projects{' '}
+          <span className="rule"></span>
+          <span className="arr">↗</span>
+        </Link>
+      )}
     </nav>
   )
 }
