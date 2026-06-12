@@ -1,4 +1,5 @@
 // Contact section — content from data/content.ts
+import Link from 'next/link'
 import { MailIcon } from '@/lib/icons'
 import { content } from '@/data/content'
 
@@ -27,6 +28,10 @@ export default function Contact() {
               {cta.label}
             </a>
           ))}
+          {/* Internal link to the projects exhibition (designed CTA) */}
+          <Link className="cta ghost" href="/projects">
+            Projects ↗
+          </Link>
         </div>
       </div>
       <div className="colophon">
