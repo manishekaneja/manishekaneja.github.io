@@ -101,3 +101,33 @@ export function MailIcon({ className, width = 17, height = 17 }: IconProps) {
     </svg>
   )
 }
+
+export function ArrowUpRightIcon({ className, width = 14, height = 14 }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      width={width}
+      height={height}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M7 17 17 7M9 7h8v8"/>
+    </svg>
+  )
+}
+
+export function HashnodeIcon({ className, width = 15, height = 15 }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      width={width}
+      height={height}
+      fill="currentColor"
+    >
+      <path d="M2.6 9.7a3.5 3.5 0 0 0 0 4.95l6.75 6.75a3.5 3.5 0 0 0 4.95 0l6.75-6.75a3.5 3.5 0 0 0 0-4.95L14.3 2.95a3.5 3.5 0 0 0-4.95 0L2.6 9.7zm9.4 4.8a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+    </svg>
+  )
+}

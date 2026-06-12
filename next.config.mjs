@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
+  trailingSlash: true,
   // NO basePath, NO assetPrefix — root user-pages site
 }
 export default nextConfig
