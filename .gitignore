@@ -9,3 +9,6 @@ dist/
 # Next.js
 /.next
 /out
+
+# IDE
+.idea/
