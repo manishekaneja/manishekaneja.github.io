@@ -124,8 +124,8 @@ html[data-theme="dark"] .mono-avatar{background:var(--accent);color:#0c0b09;bord
 .name-block h1{font-size:clamp(30px,3.4vw,40px);line-height:1.0;}
 .role{margin-top:10px;font-size:14.5px;color:var(--ink-2);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .role .at{color:var(--accent-ink);font-weight:600;}
-.meta{margin-top:16px;display:flex;flex-direction:column;gap:5px;}
-.meta a, .meta span{font-family:var(--font-mono),monospace;font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:8px;}
+.meta{margin-top:16px;display:flex;flex-direction:column;gap:2px;}
+.meta a, .meta span{font-family:var(--font-mono),monospace;font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:8px;min-height:24px;padding:3px 0;}
 .meta a:hover{color:var(--accent-ink);}
 .meta .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;}
 .status{
@@ -211,7 +211,7 @@ html[data-theme="dark"] .chip:hover{border-color:var(--accent);color:var(--accen
 .about-grid p{font-size:15.5px;color:var(--ink-2);line-height:1.65;margin:0 0 14px;text-wrap:pretty;}
 .edu{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--surface);}
 .edu .gl{font-family:var(--font-mono),monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;}
-.edu h4{font-size:16px;margin-bottom:4px;}
+.edu h3{font-size:16px;margin-bottom:4px;}
 .edu .sch{font-size:13.5px;color:var(--ink-2);}
 .edu .det{font-family:var(--font-mono),monospace;font-size:12px;color:var(--ink-3);margin-top:10px;}
 
