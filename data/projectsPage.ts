@@ -11,7 +11,7 @@ export const projectsPage = {
     h1Accent: 'for fun.',
     sub:
       'A gallery of side projects and experiments — the places I go to try an idea, learn a stack, or scratch an itch outside the day job. Code for most of these lives on GitHub.',
-    techLine: 'Next.js · Kotlin · React · TypeScript · CSS',
+    techLine: 'React · React Native · Java · Angular · Vanilla JS',
   },
   footer: {
     ftitle: 'More on the day job?',
