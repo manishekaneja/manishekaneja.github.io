@@ -21,7 +21,7 @@
   --surface-2: #f3f0ea;
   --ink:       #1b1a17;
   --ink-2:     #4b4843;
-  --ink-3:     #8c887f;
+  --ink-3:     #6c685f;
   --line:      #e4dfd6;
   --hair:      #ece8e0;
   --accent:    var(--green);
@@ -38,7 +38,7 @@ html[data-theme="dark"]{
   --surface-2: #211f1a;
   --ink:       #ece9e1;
   --ink-2:     #b3afa4;
-  --ink-3:     #7c786e;
+  --ink-3:     #8f8b82;
   --line:      #2c2a24;
   --hair:      #24221d;
   --accent:    oklch(0.72 0.15 150);
