@@ -147,6 +147,8 @@ html[data-theme="dark"] .mono-avatar{background:var(--accent);color:#0c0b09;bord
 .sb-nav a.active{color:var(--ink);}
 .sb-nav a.active .idx{color:var(--accent-ink);}
 .sb-nav a.active .rule{background:var(--accent);}
+.sb-nav a .arr{font-family:var(--font-mono),monospace;font-size:13px;color:var(--ink-3);transition:.2s var(--ease);}
+.sb-nav a.ext:hover .arr{color:var(--accent-ink);transform:translate(1px,-1px);}
 
 .sb-foot{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:14px;}
 .socials{display:flex;gap:8px;}

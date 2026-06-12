@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 const SECTIONS = ['intro', 'impact', 'work', 'stack', 'about'] as const
 const NAV_LINKS = [
@@ -74,6 +75,13 @@ export default function ScrollSpyNav() {
           <span className="rule"></span>
         </a>
       ))}
+      {/* 05 Projects — internal route link, no data-sec so scroll-spy ignores it */}
+      <Link href="/projects" className="ext">
+        <span className="idx">05</span>
+        {' '}Projects{' '}
+        <span className="rule"></span>
+        <span className="arr">↗</span>
+      </Link>
     </nav>
   )
 }
