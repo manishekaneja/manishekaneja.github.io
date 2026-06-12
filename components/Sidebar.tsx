@@ -62,7 +62,7 @@ export default function Sidebar() {
         {/* TODO: switch href to /resume.pdf once the file is dropped at public/resume.pdf (§10) */}
         <a className="resume-btn" href="mailto:manishekaneja@gmail.com">
           <DocIcon />
-          Download résumé
+          Download Resume
         </a>
       </div>
     </aside>
