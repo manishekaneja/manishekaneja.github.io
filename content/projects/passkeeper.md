@@ -37,8 +37,6 @@ year: "2023"
 repoUrl: https://github.com/manishekaneja/passkeeper
 ---
 
-## Overview
-
 PassKeeper is a local-only Android password manager built as a learning exercise in applied cryptography and Jetpack Compose. The app has no cloud backend, no analytics SDK, and requests zero network permissions — the only data pathway is the Android `ContentProvider` export used for encrypted backups.
 
 ## Security model

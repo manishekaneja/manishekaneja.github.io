@@ -42,8 +42,6 @@ liveUrl: https://manishekaneja.github.io
 repoUrl: https://github.com/manishekaneja/manishekaneja.github.io
 ---
 
-## Overview
-
 This portfolio started as a humble static page and evolved into a full Next.js App Router site with a typed content layer, a component-driven layout, and a hand-rolled dark-mode design system. The guiding metaphor is a "house with doors": the hero is the front door, each subsequent section is a room you can walk into — Work, Stack, Projects, About, Contact.
 
 ## Technical highlights
