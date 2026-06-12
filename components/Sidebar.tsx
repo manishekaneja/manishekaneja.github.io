@@ -1,6 +1,9 @@
 import ThemeToggle from './ThemeToggle'
 import ScrollSpyNav from './ScrollSpyNav'
 import { GitHubIcon, LinkedInIcon, DocIcon } from '@/lib/icons'
+import { content } from '@/data/content'
+
+const { identity } = content
 
 export default function Sidebar() {
   return (
@@ -13,26 +16,27 @@ export default function Sidebar() {
 
       {/* ---- name block ---- */}
       <div className="name-block">
-        <h1>Manish<br />Aneja</h1>
+        <h1>{identity.name[0]}<br />{identity.name[1]}</h1>
         <div className="role">
-          Senior Android Engineer{' '}
-          <span className="at">· Blinkit</span>
+          {identity.role}{' '}
+          <span className="at">{identity.roleAccent}</span>
         </div>
       </div>
 
       {/* ---- meta ---- */}
       <div className="meta">
-        <span><i className="dot"></i> Gurgaon, India</span>
-        <a href="mailto:manishekaneja@gmail.com"><i className="dot"></i> manishekaneja@gmail.com</a>
-        <a href="tel:+919911578586"><i className="dot"></i> +91 99115 78586</a>
+        <span><i className="dot"></i> {identity.meta.location}</span>
+        <a href={`mailto:${identity.meta.email}`}><i className="dot"></i> {identity.meta.email}</a>
+        <a href={`tel:${identity.meta.phone.replace(/\s/g, '')}`}><i className="dot"></i> {identity.meta.phone}</a>
       </div>
 
       {/* ---- status pill ---- */}
       <div className="status">
         <span className="pulse"></span>
         <div className="status-lines">
-          <span style={{color:'var(--ink)',fontWeight:500}}>7+ years</span>
-          <span style={{color:'var(--ink-3)'}}>Open to senior &amp; staff roles</span>
+          {identity.statusPill.map((row, i) => (
+            <span key={i} style={{ color: row.color, fontWeight: row.fontWeight }}>{row.text}</span>
+          ))}
         </div>
       </div>
 
@@ -43,26 +47,26 @@ export default function Sidebar() {
       <div className="sb-foot">
         <div className="socials">
           <a
-            href="https://github.com/manishekaneja"
+            href={identity.socials.github.href}
             target="_blank"
             rel="noopener"
           >
             <GitHubIcon />
-            GitHub
+            {identity.socials.github.label}
           </a>
           <a
-            href="https://linkedin.com/in/manishaneja"
+            href={identity.socials.linkedin.href}
             target="_blank"
             rel="noopener"
           >
             <LinkedInIcon />
-            LinkedIn
+            {identity.socials.linkedin.label}
           </a>
         </div>
         {/* TODO: switch href to /resume.pdf once the file is dropped at public/resume.pdf (§10) */}
-        <a className="resume-btn" href="mailto:manishekaneja@gmail.com">
+        <a className="resume-btn" href={identity.resume.href}>
           <DocIcon />
-          Download Resume
+          {identity.resume.label}
         </a>
       </div>
     </aside>

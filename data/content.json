@@ -1,0 +1,148 @@
+{
+  "identity": {
+    "name": ["Manish", "Aneja"],
+    "role": "Senior Android Engineer",
+    "roleAccent": "· Blinkit",
+    "meta": {
+      "location": "Gurgaon, India",
+      "email": "manishekaneja@gmail.com",
+      "phone": "+91 99115 78586"
+    },
+    "statusPill": [
+      { "text": "7+ years", "color": "var(--ink)", "fontWeight": 500 },
+      { "text": "Open to senior & staff roles", "color": "var(--ink-3)" }
+    ],
+    "socials": {
+      "github": { "label": "GitHub", "href": "https://github.com/manishekaneja" },
+      "linkedin": { "label": "LinkedIn", "href": "https://linkedin.com/in/manishaneja" }
+    },
+    "resume": {
+      "label": "Download Resume",
+      "href": "mailto:manishekaneja@gmail.com"
+    }
+  },
+  "intro": {
+    "lead": "I build Android interfaces that stay fast and reliable at the scale of **4M orders a day** — cart, payments, rendering and the design system underneath them.",
+    "leadSub": "Senior engineer at Blinkit (Eternal), where I own cart and payment surfaces, established the Jetpack Compose foundation, and build server-driven UI, observability and release-safety systems used across product teams. I lead a four-engineer Android team and have mentored engineers to promotion."
+  },
+  "impact": {
+    "stats": [
+      { "number": "4", "unit": "M/day", "label": "orders served by surfaces I build & maintain" },
+      { "number": "99.98", "unit": "%", "label": "crash-free sessions held across releases" },
+      { "number": "4", "unit": "%", "plus": "+", "label": "cart conversion lift (+10% for new users)" },
+      { "number": "20", "unit": "+", "label": "reusable design-system components shipped" },
+      { "number": "3", "unit": "×", "label": "faster load & bind on heavy scrollable screens" },
+      { "number": "−12", "unit": "%", "label": "cold-start time, −20% first-screen render" }
+    ]
+  },
+  "work": {
+    "jobs": [
+      {
+        "tag": "Current",
+        "company": "Blinkit",
+        "meta": ["Eternal · Gurgaon", "Dec 2022 — Present"],
+        "title": "Software Development Engineer 2",
+        "titleline": "Cart, payments, rendering, design system & SDUI",
+        "bullets": [
+          "Owned the cart surface: **lifted conversion 4%** (**10% for new users**) and drove **2% recovery** through Save for Later.",
+          "Established the **Jetpack Compose foundation** and standardized **20+ reusable design-system components** adopted across product teams — Compose now powers 20% of screens, with new surfaces defaulting to it.",
+          "Sped up app launch, **cutting cold-start 12%** and **first-screen render 20%** by initializing critical components earlier.",
+          "**Cut initial load & bind time 3×** on a heavy scrollable screen with a virtualized grid that binds in chunks — later reused across Wishlist and other long lists.",
+          "Instrumented **per-screen scroll metrics** now used by other teams, feeding Grafana dashboards and release gates.",
+          "Authored incident post-mortems, gated launches with LaunchDarkly, and led sprint planning, code reviews and release delivery for the Android team."
+        ]
+      },
+      {
+        "company": "Blinkit",
+        "meta": ["Eternal · Gurgaon", "Aug 2021 — Dec 2022"],
+        "title": "Software Development Engineer 1",
+        "titleline": "Payments & checkout",
+        "bullets": [
+          "Re-architected payments to standardize checkout handoff, payment-state handling and gateway integration.",
+          "Built a checkout flow that **surfaces applicable payment instruments early**, cutting offer/payment mismatches **20%**.",
+          "Integrated Juspay offers, the Simpl SDK (**6% of direct transactions** via OTP-free checkout) and UPI Collect.",
+          "Built a reusable **cart messaging framework** for interactive offers, discounts and warnings — extended to discovery screens, **contributing 7% of offer impressions**."
+        ]
+      },
+      {
+        "company": "TCS",
+        "meta": ["System Engineer", "2019 — Aug 2021"],
+        "title": "System Engineer",
+        "titleline": "Tata Consultancy Services",
+        "bullets": [
+          "**Cut page-load time by 2s** on a freelancer hiring platform by restructuring API calls and caching responses.",
+          "Built survey-validation middleware and rebuilt the scoring engine, **reducing result computation by 400ms**.",
+          "**Cut React form-development time 60%** with a reusable validation & submission hook."
+        ]
+      },
+      {
+        "company": "Earlier",
+        "meta": ["Freelance & internships"],
+        "title": "Side projects & early roles",
+        "titleline": "Provin · VOZ · e-commerce automation",
+        "bullets": [
+          "Built **Provin**, a React Native service-request tracker that cut manual tracking **90%**.",
+          "Shipped discussion-thread support for **VOZ**; built Python invoice automation at an e-commerce startup."
+        ]
+      }
+    ]
+  },
+  "stack": {
+    "groups": [
+      {
+        "label": "Languages",
+        "chips": ["Kotlin", "Java", "Go", "TypeScript", "JavaScript", "Python"]
+      },
+      {
+        "label": "Android",
+        "chips": ["Jetpack Compose", "Android SDK", "Coroutines", "Flow", "RecyclerView", "Fragments", "Custom Views"]
+      },
+      {
+        "label": "Architecture",
+        "chips": ["Modularization", "MVVM", "Server-Driven UI", "State Management", "Design Systems"]
+      },
+      {
+        "label": "Performance",
+        "chips": ["Perfetto", "Instrumentation", "R8 / ProGuard", "Optimization"]
+      },
+      {
+        "label": "Networking & Data",
+        "chips": ["Retrofit", "OkHttp", "API Integration", "Offline Storage"]
+      },
+      {
+        "label": "Tooling",
+        "chips": ["Git", "Gradle", "GitHub Actions", "CI/CD", "Grafana", "LaunchDarkly", "Firebase / FCM", "Datadog"]
+      }
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "I'm an Android engineer who likes building the foundations other engineers build on — rendering, state, design systems and server-driven UI — and then making them measurably fast and safe to ship.",
+      "At Blinkit I work where the stakes are highest: cart and payments, the surfaces between a customer deciding and a customer paying. The work spans Compose adoption, virtualized rendering, performance instrumentation, and release gating with real dashboards and post-mortems behind it.",
+      "I lead a four-engineer Android team, run sprint planning and reviews, and have mentored engineers to promotion. Outside the day job I write Kotlin, Go and TypeScript, and tinker with side projects."
+    ],
+    "education": {
+      "degree": "B.Tech, Computer Science",
+      "school": "Bharati Vidyapeeth's College of Engineering, New Delhi",
+      "detail": "May 2019 · CGPA 8.36"
+    }
+  },
+  "contact": {
+    "eyebrow": "Let's talk",
+    "heading": "Building something at scale?",
+    "paragraph": "I'm open to senior and staff Android roles where rendering, performance and platform foundations matter. Happy to chat.",
+    "primaryCta": {
+      "label": "manishekaneja@gmail.com",
+      "href": "mailto:manishekaneja@gmail.com"
+    },
+    "ghostCtas": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/manishaneja" },
+      { "label": "GitHub", "href": "https://github.com/manishekaneja" }
+    ],
+    "colophon": [
+      "© 2026 Manish Aneja",
+      "Gurgaon, IN · +91 99115 78586",
+      "Built with care · A2"
+    ]
+  }
+}

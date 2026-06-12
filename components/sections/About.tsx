@@ -1,5 +1,8 @@
-// About section — verbatim from A2 Portfolio.html lines 300–315
+// About section — content from data/content.ts
 import EducationCard from '@/components/EducationCard'
+import { content } from '@/data/content'
+
+const { about } = content
 
 export default function About() {
   return (
@@ -11,22 +14,9 @@ export default function About() {
       </div>
       <div className="about-grid">
         <div>
-          <p>
-            I&apos;m an Android engineer who likes building the foundations other engineers build
-            on — rendering, state, design systems and server-driven UI — and then making them
-            measurably fast and safe to ship.
-          </p>
-          <p>
-            At Blinkit I work where the stakes are highest: cart and payments, the surfaces
-            between a customer deciding and a customer paying. The work spans Compose adoption,
-            virtualized rendering, performance instrumentation, and release gating with real
-            dashboards and post-mortems behind it.
-          </p>
-          <p>
-            I lead a four-engineer Android team, run sprint planning and reviews, and have
-            mentored engineers to promotion. Outside the day job I write Kotlin, Go and
-            TypeScript, and tinker with side projects.
-          </p>
+          {about.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
         <EducationCard />
       </div>
