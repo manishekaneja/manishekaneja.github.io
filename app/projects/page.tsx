@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                 </div>
                 <div className="pbody">
                   {isFeat && <div className="ribbon">Featured</div>}
-                  <h3>{p.title}</h3>
+                  <h2>{p.title}</h2>
                   <div className="pstack">
                     {p.techStack.map((t) => (
                       <span key={t} className="chip">{t}</span>
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
                         href={p.liveUrl}
                         target="_blank"
                         rel="noopener"
-                        aria-label={`View ${p.title} live demo`}
+                        aria-label={`View project — ${p.title} live demo`}
                       >
                         View project <ArrowUpRightIcon />
                       </a>
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                         href={p.repoUrl}
                         target="_blank"
                         rel="noopener"
-                        aria-label={`View ${p.title} source code`}
+                        aria-label={`Code — ${p.title} source`}
                       >
                         Code
                       </a>
