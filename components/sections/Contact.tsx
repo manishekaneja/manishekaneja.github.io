@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { MailIcon } from '@/lib/icons'
 import { content } from '@/data/content'
+import { PROJECTS_ENABLED } from '@/data/flags'
 
 const { contact } = content
 
@@ -29,9 +30,11 @@ export default function Contact() {
             </a>
           ))}
           {/* Internal link to the projects exhibition (designed CTA) */}
-          <Link className="cta ghost" href="/projects">
-            Projects ↗
-          </Link>
+          {PROJECTS_ENABLED && (
+            <Link className="cta ghost" href="/projects">
+              Projects ↗
+            </Link>
+          )}
         </div>
       </div>
       <div className="colophon">
