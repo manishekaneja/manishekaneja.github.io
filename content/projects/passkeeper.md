@@ -6,43 +6,34 @@ featured: false
 draft: false
 
 thumbnail:
-  src: /projects/passkeeper/thumbnail.svg
-  alt: PassKeeper app thumbnail — teal gradient with lock-shield icon
+  src: /projects/passkeeper/passkeeper.webp
+  alt: PassKeeper app — a card interface for managing saved accounts and credentials on mobile
 hero:
-  src: /projects/passkeeper/hero.svg
-  alt: PassKeeper hero — Android app screenshot showing the vault screen with card entries
-gallery:
-  - src: /projects/passkeeper/gallery-1.svg
-    alt: PassKeeper password generator screen with entropy visualisation
-  - src: /projects/passkeeper/gallery-2.svg
-    alt: PassKeeper biometric unlock flow with fingerprint prompt
+  src: /projects/passkeeper/passkeeper.webp
+  alt: PassKeeper app — a card interface for managing saved accounts and credentials on mobile
+gallery: []
 
 techStack:
-  - Kotlin
-  - Jetpack Compose
-  - Room
-  - AES-256-GCM
+  - React Native
 
-blurb: An Android password manager built with Jetpack Compose and AES-256-GCM local encryption — all data stays on-device, no cloud sync, no telemetry.
+blurb: A mobile password manager that keeps all your credentials in one organised, offline place — no cloud, no exposure.
+
+lead: A React Native password manager built to solve a problem everyone has — remembering credentials. PassKeeper stores them in a **card interface**, keeps everything **100% offline**, and hides values by default so nothing leaks over your shoulder.
+
+metaDescription: PassKeeper — a React Native mobile app for organising saved accounts and credentials offline, with local encryption and a default-hide feature.
 
 highlights:
-  - "**AES-256-GCM** encryption with hardware-backed Android Keystore key derivation"
-  - "Biometric unlock via **BiometricPrompt API** — no master-password fallback by design"
-  - "**Offline-first** — zero network permission in the manifest"
-  - "Compose UI with **Material 3** dynamic colour and dark-mode support"
+  - "**Card-based interface** for organising accounts — easier to navigate than a notes app or text file."
+  - "**100% offline** with local encryption — no internet permission, no cloud sync, no exposure risk."
+  - "**Default-hide feature** — passwords are masked automatically so nothing leaks in public."
 
-role: Solo engineer
-year: "2023"
+role: Solo build · design + development
+year: "2021"
 
-repoUrl: https://github.com/manishekaneja/passkeeper
+liveUrl: https://personal-projects.netlify.app/pass-keeper
+repoUrl: https://github.com/manishekaneja
 ---
 
-PassKeeper is a local-only Android password manager built as a learning exercise in applied cryptography and Jetpack Compose. The app has no cloud backend, no analytics SDK, and requests zero network permissions — the only data pathway is the Android `ContentProvider` export used for encrypted backups.
+One of the most common problems people share is keeping track of passwords. The obvious fix — writing them somewhere — raises its own question: is that actually safe? A piece of paper can be read by anyone nearby. A notes app on your phone isn't much better if it's not organised or protected.
 
-## Security model
-
-Each credential entry is encrypted at rest with AES-256-GCM. The symmetric key never leaves the Android Keystore; it is derived once on first launch and thereafter only materialised inside a hardware-backed security context. Biometric authentication gates every unlock — the app deliberately omits a master-password fallback to avoid a weaker authentication path being used as a workaround.
-
-## Architecture
-
-The data layer is Room with a single `CredentialEntity` table. Encryption and decryption are handled by a `CryptoRepository` that wraps the `Cipher` lifecycle; the DAO never sees plaintext. The UI layer is pure Jetpack Compose with a unidirectional `ViewModel → StateFlow → Composable` data flow. Material 3 dynamic colour adapts the palette automatically to the device's wallpaper on Android 12+.
+PassKeeper was built to solve the exact same problem. It gives each set of credentials its own card, keeps the whole thing **100% offline** with local encryption, and hides your passwords by default so there's no risk of someone glancing over your shoulder. No internet connection required, no account to create, no server to trust.
