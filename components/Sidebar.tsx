@@ -30,10 +30,10 @@ export default function Sidebar() {
       {/* ---- status pill ---- */}
       <div className="status">
         <span className="pulse"></span>
-        <span className="status-text">
-          <span>7+ years</span>
-          <span>open to senior &amp; staff roles</span>
-        </span>
+        <div className="status-lines">
+          <span style={{color:'var(--ink)',fontWeight:500}}>7+ years</span>
+          <span style={{color:'var(--ink-3)'}}>Open to senior &amp; staff roles</span>
+        </div>
       </div>
 
       {/* ---- scroll-spy nav ---- */}
