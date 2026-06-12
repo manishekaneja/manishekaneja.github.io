@@ -1,13 +1,19 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SunIcon, MoonIcon } from '@/lib/icons'
 
 // localStorage key — must match the anti-FOUC head script in app/layout.tsx
 const THEME_KEY = 'ma-portfolio-theme'
 
 export default function ThemeToggle() {
+  // aria-pressed is set after mount to avoid hydration mismatch
+  const [isDark, setIsDark] = useState<boolean | undefined>(undefined)
+
   useEffect(() => {
+    // Sync aria-pressed from the current data-theme (set by anti-FOUC script)
+    setIsDark(document.documentElement.getAttribute('data-theme') === 'dark')
+
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault()
@@ -25,6 +31,7 @@ export default function ThemeToggle() {
     const current = html.getAttribute('data-theme')
     const next = current === 'dark' ? 'light' : 'dark'
     html.setAttribute('data-theme', next)
+    setIsDark(next === 'dark')
     try {
       localStorage.setItem(THEME_KEY, next)
     } catch (_) {
@@ -33,20 +40,23 @@ export default function ThemeToggle() {
   }
 
   return (
-    // Render static markup — CSS shows sun/moon based on data-theme attribute
+    // Render static markup — CSS shows the correct slot based on data-theme attribute
     // which the anti-FOUC head script already set before first paint.
-    // Listeners are attached in useEffect to avoid hydration mismatch.
+    // Slot shown in LIGHT mode (.light-only): MoonIcon + "Switch to dark" (target theme)
+    // Slot shown in DARK mode (.dark-only): SunIcon + "Switch to light" (target theme)
+    // Listeners and aria-pressed are set in useEffect to avoid hydration mismatch.
     <div
       className="theme-toggle"
       id="themeToggle"
       role="button"
       tabIndex={0}
       onClick={toggle}
+      aria-pressed={isDark}
     >
-      <SunIcon className="ico light-only" />
-      <MoonIcon className="ico dark-only" />
-      <span className="light-only">Light</span>
-      <span className="dark-only">Dark</span>
+      <MoonIcon className="ico light-only" />
+      <SunIcon className="ico dark-only" />
+      <span className="light-only">Switch to dark</span>
+      <span className="dark-only">Switch to light</span>
     </div>
   )
 }
